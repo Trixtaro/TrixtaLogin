@@ -34,6 +34,7 @@ public class SendMessage implements CommandExecutor{
         return CommandSpec.builder()
                 .permission("trixtalogin.command.base")
                 .child(Greeting.base(), "greeting")
+                .child(Message.base(), "message")
                 .description(Text.of("This is the base command"))
                 .executor(new SendMessage())
                 .build();
