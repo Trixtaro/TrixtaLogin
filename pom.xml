@@ -26,7 +26,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>TrixtaPlugin</finalName>
+        <finalName>TrixtaLogin</finalName>
         <defaultGoal>clean install</defaultGoal>
         <resources>
             <resource>
