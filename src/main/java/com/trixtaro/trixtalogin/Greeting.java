@@ -12,15 +12,15 @@ import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;
 import org.spongepowered.api.text.format.TextStyles;
 
-public class SendMessage implements CommandExecutor{
-
+public class Greeting implements CommandExecutor{
+    
     @Override
     public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
         
         if(src instanceof Player){
             
             Player player = (Player) src;
-            player.sendMessage(Text.of(TextColors.AQUA, TextStyles.BOLD, "Hello, " + player.getName()));
+            player.sendMessage(Text.of(TextColors.AQUA, TextStyles.BOLD, "Hello, nice to see you, " + player.getName()));
             
         } else {
             
@@ -32,10 +32,9 @@ public class SendMessage implements CommandExecutor{
     
     public static CommandSpec base(){
         return CommandSpec.builder()
-                .permission("trixtalogin.command.base")
-                .child(Greeting.base(), "greeting")
+                .permission("trixtalogin.command.greeting")
                 .description(Text.of("This is the base command"))
-                .executor(new SendMessage())
+                .executor(new Greeting())
                 .build();
     }
     

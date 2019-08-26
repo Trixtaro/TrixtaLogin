@@ -24,14 +24,8 @@ public class TrixtaLogin {
         instance = this;
         
         logger.info("Successfully running TrixtaLogin!!!");
-        
-        CommandSpec command = CommandSpec.builder()
-                .permission("trixtalogin.command.base")
-                .description(Text.of("This is the base command"))
-                .executor(new SendMessage())
-                .build();
-        
-        Sponge.getCommandManager().register(instance, command, "hello");
+
+        Sponge.getCommandManager().register(instance, SendMessage.base(), "hello");
 
     }
 
