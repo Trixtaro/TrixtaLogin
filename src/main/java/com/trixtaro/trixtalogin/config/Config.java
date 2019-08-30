@@ -25,7 +25,6 @@ public class Config {
 
                 Config.config.createNewFile();
                 Config.confNode = Config.loader.load();
-                addValues();
                 Config.loader.save(confNode);
             }
         
@@ -37,10 +36,13 @@ public class Config {
 
     }
     
-    private static void addValues(){
+    public static void save(){
         
-        Config.confNode.getNode("Player","player1").setValue("Valor").setComment("This is a player value.");
-        
+        try{
+            Config.loader.save(confNode);
+        }catch(Exception ex){
+            
+        }
     }
     
 }
