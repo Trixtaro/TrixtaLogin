@@ -5,7 +5,6 @@ import com.trixtaro.trixtalogin.config.Config;
 import com.trixtaro.trixtalogin.login.Login;
 import com.trixtaro.trixtalogin.login.LoginTimer;
 import com.trixtaro.trixtalogin.login.Register;
-import com.trixtaro.trixtalogin.login.noLoginTP;
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
@@ -91,7 +90,6 @@ public class TrixtaLogin {
         }
         
         new LoginTimer(player).start();
-        new noLoginTP(player).start();
         
     }
     

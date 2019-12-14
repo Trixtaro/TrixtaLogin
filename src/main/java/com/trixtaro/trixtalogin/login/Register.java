@@ -12,6 +12,7 @@ import org.spongepowered.api.command.args.CommandContext;
 import org.spongepowered.api.command.args.GenericArguments;
 import org.spongepowered.api.command.spec.CommandExecutor;
 import org.spongepowered.api.command.spec.CommandSpec;
+import org.spongepowered.api.data.key.Keys;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;
@@ -38,7 +39,7 @@ public class Register implements CommandExecutor{
                     Config.save();
                     
                     player.sendMessage(Text.of("Te has registrado en el servidor. Bienvenido."));
-                    
+                    player.offer(Keys.WALKING_SPEED, 0.1);
                 } else {
                     
                     player.kick(Text.of("Las contraseñas deben coincidir."));
