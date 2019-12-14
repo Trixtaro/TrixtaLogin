@@ -12,6 +12,7 @@ import org.spongepowered.api.command.args.CommandContext;
 import org.spongepowered.api.command.args.GenericArguments;
 import org.spongepowered.api.command.spec.CommandExecutor;
 import org.spongepowered.api.command.spec.CommandSpec;
+import org.spongepowered.api.data.key.Keys;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;
@@ -37,23 +38,23 @@ public class Register implements CommandExecutor{
                     
                     Config.save();
                     
-                    player.sendMessage(Text.of("You are registered in the server. Welcome."));
-                    
+                    player.sendMessage(Text.of("Te has registrado en el servidor. Bienvenido."));
+                    player.offer(Keys.WALKING_SPEED, 0.1);
                 } else {
                     
-                    player.kick(Text.of("The password and repeat_password must be equals."));
+                    player.kick(Text.of("Las contraseñas deben coincidir."));
                     
                 }
            
             } else {
                 
-                player.sendMessage(Text.of("You are already registered. Please use /login password."));
+                player.sendMessage(Text.of("Ya estas registrado, utiliza /login contraseña."));
 
             }
             
         } else {
             
-            src.sendMessage(Text.of(TextColors.RED, "Only a player can execute this command."));
+            src.sendMessage(Text.of(TextColors.RED, "Solo un jugador puede usar el comando."));
             
         }
         return CommandResult.success();

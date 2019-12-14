@@ -28,7 +28,7 @@ public class LoginTimer extends Thread{
       
         if(Config.confNode.getNode("Player", player.getName(), "isLogged").getBoolean() == false){
             
-            this.player.kick(Text.of("You need to login/register under the limit time."));
+            this.player.kick(Text.of("Tienes que registrarte/logearte antes del tiempo."));
             
         }
         

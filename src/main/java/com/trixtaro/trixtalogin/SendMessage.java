@@ -20,11 +20,11 @@ public class SendMessage implements CommandExecutor{
         if(src instanceof Player){
             
             Player player = (Player) src;
-            player.sendMessage(Text.of(TextColors.AQUA, TextStyles.BOLD, "Hello, " + player.getName()));
+            player.sendMessage(Text.of(TextColors.AQUA, TextStyles.BOLD, "Bienvenido, " + player.getName()));
             
         } else {
             
-            src.sendMessage(Text.of(TextColors.RED, "Only a player can execute this command."));
+            src.sendMessage(Text.of(TextColors.RED, "Solo un jugador puede usar este comando."));
             
         }
         return CommandResult.success();

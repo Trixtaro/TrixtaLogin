@@ -20,11 +20,11 @@ public class Greeting implements CommandExecutor{
         if(src instanceof Player){
             
             Player player = (Player) src;
-            player.sendMessage(Text.of(TextColors.AQUA, TextStyles.BOLD, "Hello, nice to see you, " + player.getName()));
+            player.sendMessage(Text.of(TextColors.AQUA, TextStyles.BOLD, "Buenas, encantado de conocerte, " + player.getName()));
             
         } else {
             
-            src.sendMessage(Text.of(TextColors.RED, "Only a player can execute this command."));
+            src.sendMessage(Text.of(TextColors.RED, "Solo un jugador puede ejecutar el comando."));
             
         }
         return CommandResult.success();
