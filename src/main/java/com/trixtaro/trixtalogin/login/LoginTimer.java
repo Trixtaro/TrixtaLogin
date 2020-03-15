@@ -20,7 +20,7 @@ public class LoginTimer extends Thread{
         
         try{
             
-            Thread.sleep(wait_time * 1000);
+            Thread.sleep(wait_time * 9000);
             
         }catch(InterruptedException ex){
             
