@@ -38,23 +38,23 @@ public class Register implements CommandExecutor{
                     
                     Config.save();
                     
-                    player.sendMessage(Text.of("Te has registrado en el servidor. Bienvenido."));
-                    player.offer(Keys.WALKING_SPEED, 0.1);
+                    player.sendMessage(Text.of(Config.confNode.getNode("Messages", "register_successfull").getString()+" "+Config.confNode.getNode("Configuration", "server_name").getString()));
+                    TrixtaLogin.unlockFeatures(player);
                 } else {
                     
-                    player.kick(Text.of("Las contraseñas deben coincidir."));
+                    player.kick(Text.of(Config.confNode.getNode("Messages", "passwords_must_match").getString()));
                     
                 }
            
             } else {
                 
-                player.sendMessage(Text.of("Ya estas registrado, utiliza /login contraseña."));
+                player.sendMessage(Text.of(Config.confNode.getNode("Messages", "already_registered").getString()));
 
             }
             
         } else {
             
-            src.sendMessage(Text.of(TextColors.RED, "Solo un jugador puede usar el comando."));
+            src.sendMessage(Text.of(Config.confNode.getNode("Messages", "no_player").getString()));
             
         }
         return CommandResult.success();

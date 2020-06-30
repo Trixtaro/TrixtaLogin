@@ -34,23 +34,23 @@ public class Login implements CommandExecutor{
                     Config.confNode.getNode("Player", player.getName(), "isLogged").setValue(true);
                     Config.save();
                     
-                    player.sendMessage(Text.of("Te has logeado. Bienvenido."));
-                    player.offer(Keys.WALKING_SPEED, 0.1);
+                    player.sendMessage(Text.of(Config.confNode.getNode("Messages", "log_successfull").getString()));
+                    TrixtaLogin.unlockFeatures(player);
                 } else {
                     
-                    player.kick(Text.of("La contraseña esta mal."));
+                    player.kick(Text.of(Config.confNode.getNode("Messages", "wrong_password").getString()));
                     
                 }
            
             } else {
                 
-                player.sendMessage(Text.of("Ya estas logeado."));
+                player.sendMessage(Text.of(Config.confNode.getNode("Messages", "already_logged").getString()));
 
             }
             
         } else {
             
-            src.sendMessage(Text.of(TextColors.RED, "Solo un jugador puede usar el comando."));
+            src.sendMessage(Text.of(Config.confNode.getNode("Messages", "no_player").getString()));
             
         }
         return CommandResult.success();
