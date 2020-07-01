@@ -6,7 +6,6 @@ import com.trixtaro.trixtalogin.config.Config;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.scheduler.Task;
 import org.spongepowered.api.text.Text;
-import org.spongepowered.api.world.Location;
 
 public class LoginTimer extends Thread{
     
