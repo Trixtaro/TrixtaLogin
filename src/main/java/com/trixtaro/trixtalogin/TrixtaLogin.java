@@ -20,18 +20,20 @@ import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.game.GameReloadEvent;
 import org.spongepowered.api.event.game.state.GameInitializationEvent;
 import org.spongepowered.api.event.game.state.GamePreInitializationEvent;
+import org.spongepowered.api.event.command.SendCommandEvent;
 import org.spongepowered.api.event.network.ClientConnectionEvent;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;
 import org.spongepowered.api.entity.living.player.Player;
+import org.spongepowered.api.world.Location;
 
 @Plugin(id = "trixtalogin", name = "TrixtaLogin", version = "1.0", description = "An authentication plugin for Sponge.")
 
 public class TrixtaLogin {
     
     public static TrixtaLogin instance;
-    
+
     @Inject
     @DefaultConfig(sharedRoot = true)
     private File file;
@@ -60,6 +62,7 @@ public class TrixtaLogin {
     public void onPlayerJoin(ClientConnectionEvent.Join e){
         
         Player player = e.getTargetEntity();
+        
         double locationX = player.getLocation().getX();
         double locationY = player.getLocation().getY();
         double locationZ = player.getLocation().getZ();
@@ -67,6 +70,9 @@ public class TrixtaLogin {
         Config.confNode.getNode("Player", player.getName(),"location-y").setValue(locationY);
         Config.confNode.getNode("Player", player.getName(),"location-z").setValue(locationZ);
         Config.save();
+        
+        TrixtaLogin.blockFeatures(player);
+        
         if(Config.confNode.getNode("Player", player.getName(),"password").isVirtual()){
             
             player.sendMessage(Text.of(TextColors.GOLD,Config.confNode.getNode("Messages", "player_not_registered_1").getString()));
@@ -85,6 +91,11 @@ public class TrixtaLogin {
     
     @Listener
     public void onPlayerExit(ClientConnectionEvent.Disconnect e){
+        
+        Player player = e.getTargetEntity();
+        
+        if(Config.confNode.getNode("Player", player.getName(), "isLogged").getBoolean() == false)
+            TrixtaLogin.unlockFeatures(player);
         
         Login.logout(e.getTargetEntity());
         
@@ -119,14 +130,26 @@ public class TrixtaLogin {
         
     }
     
+    @Listener
+    public void onSalto(SendCommandEvent event){
+        //if()
+    }
+    
     public static void blockFeatures(Player player){
+ 
         player.offer(Keys.WALKING_SPEED, 0.0);
-        //player.
+        
     }
     
     public static void unlockFeatures(Player player){
+        
+        double locationX = Config.confNode.getNode("Player", player.getName(),"location-x").getFloat();
+        double locationY = Config.confNode.getNode("Player", player.getName(),"location-y").getFloat();
+        double locationZ = Config.confNode.getNode("Player", player.getName(),"location-z").getFloat();
+        player.setLocation(new Location(player.getWorld(), locationX, locationY, locationZ));
+        
         player.offer(Keys.WALKING_SPEED, 0.1);
-        //player.offer(Keys.CAN_DROP_AS_ITEM, true);
+        
     }
 
     
