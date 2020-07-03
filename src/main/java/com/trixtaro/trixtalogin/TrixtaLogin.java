@@ -28,7 +28,7 @@ import org.spongepowered.api.text.format.TextColors;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.world.Location;
 
-@Plugin(id = "trixtalogin", name = "TrixtaLogin", version = "1.0", description = "An authentication plugin for Sponge.")
+@Plugin(id = "trixtalogin", name = "TrixtaLogin", version = "1.3", description = "An authentication plugin for Sponge.")
 
 public class TrixtaLogin {
     
